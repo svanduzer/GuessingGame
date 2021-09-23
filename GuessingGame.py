@@ -7,8 +7,7 @@ A program allows the user to play a  game to guess a number with 3 different mod
 import random
 
 
-# returns whether or not the user could guess a random number
-def guessNumber(guessesNum, maxNum):
+def guessNumber(guessesNum, maxNum):  # returns if the user could guess the answer
     # sets the answer of game to a random number
     answer = random.randint(1, maxNum)
     counter = 0
@@ -24,7 +23,7 @@ def guessNumber(guessesNum, maxNum):
                 print("Try guessing higher. You have",
                       (guessesNum - (counter + 1)), "guesses left.")
             else:
-                return True  # returns that the user guessed the answer
+                return True  # returns the user guessed the answer
 
             counter += 1
 
@@ -63,7 +62,7 @@ def main():
     mode = 0
     print("Welcome to Guess. This is a small guessing game")
 
-    while mode != 4:  # user can replay as many times they want
+    while mode != 4:  # user can replay until they enter 4
         try:
             print("1. Rookie   -   1 to 10     (4 guesses)\n"
                   + "2. Amateur  -   1 to 100    (8 guesses)\n"
@@ -73,8 +72,8 @@ def main():
 
             if 0 < mode < 4:  # user has entered a valid mode
                 guessesNum, maxNum = setMode(mode)
-                # displays differnt message depending if user guessed right
                 if guessNumber(guessesNum, maxNum):
+                    # displays message depending if user guessed right
                     print("\nCongratulations! You guessed it right!")
                 else:
                     print("\nOh no! You ran out of guesses.")
@@ -86,7 +85,7 @@ def main():
             else:
                 print("Please only enter a number from 1 to 4.")
 
-        except:  # input was not a number from 1 to 4
+        except:  # input was not an integer from 1 to 4
             print("Please only enter a number from 1 to 4: ")
 
 
